@@ -1,192 +1,193 @@
-# LaunchForge AI
+LaunchForge AI
+Turn product chaos into a business ready to launch.
+LaunchForge AI is an AI-powered commerce launch platform built for small sellers, D2C founders, boutiques, wholesalers, and first-time entrepreneurs who often start with one thing: a messy folder of product photos.
+Instead of manually organizing images, writing product information, cleaning media, building a storefront, and preparing marketing creatives, LaunchForge turns raw supplier/product media into a structured, launch-ready ecommerce workflow powered by Cloudinary.
+Hackathon
+Pixels to Products — Cloudinary AI Hackathon 2026
+Track: PS-03 — Your Media-Savvy Startup
+The Problem
+Small sellers often receive inventory as:
+- WhatsApp images
+- supplier folders
+- random phone photos
+- duplicate images
+- multiple angles of the same product
+- inconsistent image quality
+- no SKU structure
+- no product metadata
+- no storefront
+- no launch creatives
+The media exists, but the business structure does not.
+The Solution
+LaunchForge reconstructs the commerce structure hidden inside that media.
+Core workflow
+Raw product media → AI understanding → product catalog → launch intelligence → storefront → campaign → product video
+LaunchForge can:
+- bulk upload product media
+- identify products with Cloudinary AI Vision
+- extract category, color, style, material, tags, and descriptions
+- reconstruct SKU families from raw media
+- detect exact duplicates with ETag
+- use pHash as a visual-similarity signal
+- identify multiple views of the same product
+- check media quality before launch
+- manage price and stock in bulk
+- export/import catalog data through CSV
+- store commerce data as Cloudinary structured metadata
+- generate niche-aware storefronts
+- create campaign imagery from managed product assets
+- generate vertical product videos with Cloudinary transformations
+- prepare assets for social publishing workflows
+Why LaunchForge Is Different
+Many tools start after a catalog already exists.
+LaunchForge starts before that.
+The seller can begin with an unstructured folder of media and LaunchForge helps reconstruct the actual business inventory behind it.
+Give us the mess. We give you the business.
 
-# LaunchForge AI V7.6
-
-**Submission-safe video patch:** the region-gated Cloudinary Image-to-Video beta is removed from the demo UI. Single-product videos now use Cloudinary's documented zoompan image→MP4 delivery transformation and are verified server-side before being shown.
-
-# LaunchForge AI V7 — Launch Intelligence
-
-**Give LaunchForge the messy supplier folder. It reconstructs the business hidden inside it.**
-
-LaunchForge V7 turns raw product media into launch-ready commerce: duplicate detection, SKU reconstruction, multi-angle grouping, media-quality scoring, structured inventory metadata, 360-ready product experiences, Brand DNA, storefronts, campaign imagery, vertical video, and optional social publishing.
-
-**Hackathon:** Pixels to Products — Cloudinary AI Hackathon 2026  
-**Track:** PS-03 — Your Media-Savvy Startup
-
-## The V7 differentiator
-
-Most media tools start after a seller already has a clean catalog. LaunchForge starts *before* the catalog exists.
-
-A seller can upload a chaotic WhatsApp/supplier folder and LaunchForge tries to answer:
-
-- Which files are exact duplicates?
-- Which photos are probably the same SKU from different angles?
-- Which photos are color variants of the same product family?
-- Which assets are blurry or too small for launch?
-- Which products are missing price or stock?
-- Which multi-angle groups are ready for a 360 product experience?
-- What kind of brand/storefront should this inventory become?
-- What launch creative/video can be generated from the exact product media?
-
-## Cloudinary capabilities used
-
-### Smart SKU Builder
-- Upload API `etag` for exact duplicate detection.
-- Upload API `phash: true` for perceptual fingerprints.
-- Cloudinary AI Vision for `productFamily`, category, visible color and camera/view angle.
-- LaunchForge combines these signals to group multi-angle media and variants.
-
-### Media Doctor
-- `quality_analysis: true` returns a Cloudinary focus score.
-- Resolution checks identify weak supplier media.
-- `e_gen_restore` + `e_improve` create rescue versions for poor-quality images.
-
-### Living Commerce Media
-V7 automatically creates LaunchForge structured metadata fields when the seller first saves commerce data:
-- `ss_name`
-- `ss_price`
-- `ss_stock`
-- `ss_description`
-
-Edits are written back to Cloudinary. The resulting living creative reads metadata during delivery and can conditionally render `SOLD OUT` when stock reaches zero.
-
-### 360-ready Product Gallery
-When a SKU has enough distinct views, LaunchForge:
-1. creates ordered Cloudinary frame assets,
-2. applies one spin tag,
-3. opens Cloudinary Product Gallery with `{ mediaType: "spin" }`.
-
-If client-side asset lists are not enabled, V7 keeps a frame-scrubber fallback so the demo remains usable.
-
-### Generative Product Lab
-- `e_gen_background_replace` creates merchant-directed lifestyle/campaign scenes while preserving the foreground product.
-- `e_gen_recolor` previews merchant-approved colorways from a real SKU photo.
-- Both are progressive enhancements: LaunchForge keeps the original product available if the generative transformation is unavailable or pending.
-
-### Accessibility + provenance (optional beta features)
-If your Cloudinary account has access, V7 can request color-blind accessibility analysis at upload time and surface the score in Media Doctor. V7 can also expose a `fl_c2pa` signed delivery link for product media when C2PA access is enabled.
-
-### AI Launch Director
-Cloudinary Image Generation can use the existing product `asset_id` as a managed reference image. LaunchForge sends an art-direction prompt to the `image_to_image` endpoint and stores the result back in Cloudinary.
-
-This requires the **Cloudinary Image Generation add-on**. The rest of V7 works without it.
-
-### Website / Brand DNA
-Cloudinary AI Vision analyzes the full catalog and LaunchForge derives:
-- niche
-- target audience
-- brand personality
-- collection name
-- hero line
-- campaign angle
-- palette
-- recommended storefront direction
-
-Store directions: Editorial, Luxe, Bold, Minimal, Tech.
-
-### Video Studio
-- Single product by default.
-- Optional multi-product campaign mode.
-- Cloudinary zoom/pan transformations for deterministic MP4s.
-- Optional Cloudinary Image-to-Video beta for prompt-driven AI Motion.
-
-### Publish
-Optional OAuth integrations for Instagram professional accounts and YouTube.
-
----
-
-## Required `.env.local`
-
-```env
+Cloudinary at the Core
+Cloudinary is not used as passive image hosting. It is the media intelligence and transformation layer of the product.
+Cloudinary capabilities used
+Upload & Media Management
+- Upload API
+- managed media assets
+- folders, tags, context, metadata
+- optimized delivery
+AI Understanding
+- Cloudinary AI Vision
+- structured product analysis
+- product/category/attribute extraction
+Catalog Intelligence
+- ETag for exact duplicate detection
+- perceptual hash (pHash) as a similarity signal
+- AI-generated product-family and camera-angle metadata
+Media Doctor
+- image quality/focus analysis
+- launch-readiness checks
+- generative restoration where available
+Living Commerce Media
+- Cloudinary structured metadata
+- product name
+- price
+- stock
+- descriptions
+- catalog attributes
+Creative Generation
+- Cloudinary Image Generation where enabled
+- product-reference campaign imagery
+- Cloudinary transformations
+- background/scene generation where supported
+- recolor workflows where supported
+Video
+- Cloudinary image-to-video delivery using motion transformations
+- vertical MP4 product videos
+- multiple motion styles for social content
+Main Product Areas
+1. Launch
+Upload raw product photos and start a launch project.
+2. Catalog
+LaunchForge turns media into structured products.
+The seller can review or edit:
+- product name
+- category
+- color
+- style
+- material
+- description
+- tags
+- price
+- stock
+For larger catalogs, bulk inventory tools and CSV import/export avoid editing products one by one.
+3. Launch Intelligence
+Launch Intelligence is where LaunchForge converts media into actionable commerce structure.
+It includes:
+- Smart SKU Builder
+- duplicate detection
+- multi-angle product grouping
+- Media Doctor
+- inventory metadata
+- market research shortcuts
+- campaign generation
+- multi-angle product galleries
+- Cloudinary capability visibility
+- launch-readiness scoring
+4. Website Studio
+LaunchForge uses the catalog and brand context to generate storefront directions such as:
+- Editorial
+- Luxe
+- Bold
+- Minimal
+- Tech
+The design can adapt to the niche instead of forcing every business into one template.
+5. Video Studio
+Create product-focused vertical videos for:
+- Instagram Reels
+- YouTube Shorts
+- product launches
+- social campaigns
+Single-product mode keeps one SKU as the focus, while campaign mode is used only when the seller deliberately selects multiple products.
+Example
+A seller uploads:
+- front image of a black sneaker
+- side image of the same sneaker
+- back image of the same sneaker
+- another supplier photo
+- a watch
+- a backpack
+LaunchForge can turn that into:
+- structured sneaker product
+- multiple views grouped under the product
+- product attributes
+- catalog metadata
+- price and stock
+- storefront listing
+- campaign image
+- vertical launch video
+The seller starts with files and ends with launch-ready commerce assets.
+Tech Stack
+- Next.js
+- TypeScript
+- React
+- Cloudinary
+- Cloudinary Node SDK
+- Cloudinary AI Vision
+- Cloudinary transformations
+- Cloudinary structured metadata
+Optional integrations can be configured separately for authentication and publishing workflows.
+Local Setup
+1. Clone the repository
+git clone https://github.com/cherukuriharshadatta-cpu/launchforge-ai.git
+cd launchforge-ai
+2. Install dependencies
+npm install
+3. Create .env.local
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-```
-
-Enable **Cloudinary AI Vision** for product understanding.
-
-No extra environment variables are required for pHash, ETag, basic quality analysis, structured metadata, transformations, or the Product Gallery tag preparation.
-
-## Optional add-ons
-
-### Image Generation
-Enable Cloudinary **Image Generation** to use AI Launch Director.
-
-### Image to Video
-Enable **Image to Video** to use the AI Motion mode in Video Studio.
-
-### Generative transformations
-`gen_restore`, generative background replacement/recolor and related transformations may consume special transformation/add-on quota depending on your plan.
-
-### Optional accessibility + C2PA betas
-Only enable these if Cloudinary has activated them for your account:
-
-```env
-CLOUDINARY_ACCESSIBILITY_ANALYSIS=true
-CLOUDINARY_C2PA_ENABLED=true
-```
-
-Leave both `false`/unset otherwise.
-
-## Optional login via Supabase
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=...
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-```
-
-If omitted, use the clearly labeled local demo studio.
-
-## Optional Instagram publishing
-
-```env
-INSTAGRAM_APP_ID=...
-INSTAGRAM_APP_SECRET=...
-INSTAGRAM_REDIRECT_URI=http://localhost:3000/api/social/instagram/callback
-META_GRAPH_VERSION=v25.0
-```
-
-## Optional YouTube publishing
-
-```env
-GOOGLE_CLIENT_ID=...
-GOOGLE_CLIENT_SECRET=...
-GOOGLE_REDIRECT_URI=http://localhost:3000/api/social/youtube/callback
-```
-
-## Run
-
-```bash
-npm install
+Never commit .env.local or real API secrets.
+4. Run the app
 npm run dev
-```
-
-Windows PowerShell fallback:
-
-```cmd
-npm.cmd install
-npm.cmd run dev
-```
-
-Open `http://localhost:3000`.
-
-## Best V7 demo flow
-
-1. Upload a deliberately messy set: duplicates + 3 angles of one product + another color + a second product.
-2. Show exact duplicates disappearing automatically.
-3. Open **Launch Intelligence**.
-4. Show SKU families, view angles, variants and media-health results.
-5. If one SKU has 3+ useful views, click **Create 360 view**.
-6. Edit a product and add price + stock; return to Launch Intelligence and show the **Living Commerce Media** creative.
-7. Change stock to `0` and demonstrate the metadata-driven SOLD OUT creative after Cloudinary/CDN refresh.
-8. Try **Generative Product Lab**: create a new scene or colorway for one SKU.
-9. Use **AI Launch Director** if Image Generation is enabled.
-10. Generate Brand DNA and show a niche-aware storefront.
-11. Generate a single-product Reel / Short.
-12. Show Publish connections.
-
-## Why Cloudinary is the product core
-
-Cloudinary is used for media storage, immutable asset IDs, ETags, pHash fingerprints, AI Vision, quality analysis, tags/context, structured metadata, smart crop, auto quality/format, background removal, generative restoration, generative scene replacement/recolor, conditional metadata transformations, ordered spin frames, Product Gallery, image generation, optional accessibility/C2PA analysis, still-to-video, AI image-to-video, and final delivery.
-
-LaunchForge is not a website builder that happens to upload images. The business is reconstructed *from media*, and nearly every output is created or driven by the Cloudinary media graph.
+Open:
+http://localhost:3000
+Recommended Demo Flow
+1. Upload a small folder containing:
+   - multiple views of one product
+   - another product
+   - one duplicate image
+2. Show automatic product understanding.
+3. Open Catalog and review the generated attributes.
+4. Open Launch Intelligence.
+5. Show SKU reconstruction, duplicate handling, media quality, and metadata.
+6. Add price/stock.
+7. Open Website Studio and generate a storefront.
+8. Generate campaign imagery.
+9. Open Video Studio and generate a vertical product video.
+Security
+Secrets are stored locally in .env.local and are excluded from the repository through .gitignore.
+Do not expose:
+- CLOUDINARY_API_SECRET
+- OAuth client secrets
+- private access tokens
+Repository
+https://github.com/cherukuriharshadatta-cpu/launchforge-ai
+License
+MIT License
