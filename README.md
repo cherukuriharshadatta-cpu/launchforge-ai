@@ -1,193 +1,268 @@
-LaunchForge AI
-Turn product chaos into a business ready to launch.
-LaunchForge AI is an AI-powered commerce launch platform built for small sellers, D2C founders, boutiques, wholesalers, and first-time entrepreneurs who often start with one thing: a messy folder of product photos.
-Instead of manually organizing images, writing product information, cleaning media, building a storefront, and preparing marketing creatives, LaunchForge turns raw supplier/product media into a structured, launch-ready ecommerce workflow powered by Cloudinary.
-Hackathon
-Pixels to Products — Cloudinary AI Hackathon 2026
-Track: PS-03 — Your Media-Savvy Startup
-The Problem
-Small sellers often receive inventory as:
-- WhatsApp images
-- supplier folders
-- random phone photos
-- duplicate images
-- multiple angles of the same product
-- inconsistent image quality
-- no SKU structure
-- no product metadata
-- no storefront
-- no launch creatives
-The media exists, but the business structure does not.
-The Solution
-LaunchForge reconstructs the commerce structure hidden inside that media.
-Core workflow
-Raw product media → AI understanding → product catalog → launch intelligence → storefront → campaign → product video
-LaunchForge can:
-- bulk upload product media
-- identify products with Cloudinary AI Vision
-- extract category, color, style, material, tags, and descriptions
-- reconstruct SKU families from raw media
-- detect exact duplicates with ETag
-- use pHash as a visual-similarity signal
-- identify multiple views of the same product
-- check media quality before launch
-- manage price and stock in bulk
-- export/import catalog data through CSV
-- store commerce data as Cloudinary structured metadata
-- generate niche-aware storefronts
-- create campaign imagery from managed product assets
-- generate vertical product videos with Cloudinary transformations
-- prepare assets for social publishing workflows
-Why LaunchForge Is Different
-Many tools start after a catalog already exists.
-LaunchForge starts before that.
-The seller can begin with an unstructured folder of media and LaunchForge helps reconstruct the actual business inventory behind it.
-Give us the mess. We give you the business.
+# LaunchForge AI
 
-Cloudinary at the Core
-Cloudinary is not used as passive image hosting. It is the media intelligence and transformation layer of the product.
-Cloudinary capabilities used
-Upload & Media Management
-- Upload API
-- managed media assets
-- folders, tags, context, metadata
-- optimized delivery
-AI Understanding
+**Turn product chaos into a business ready to launch.**
+
+LaunchForge AI is an AI-powered commerce launch platform built with Cloudinary for small sellers, D2C founders, boutiques, wholesalers, and first-time entrepreneurs.
+
+---
+
+## Hackathon
+
+**Pixels to Products - Cloudinary AI Hackathon 2026**  
+**Track:** PS-03 - Your Media-Savvy Startup
+
+---
+
+## The Problem
+
+Small sellers often start with a messy collection of product media:
+
+- WhatsApp images
+- Supplier folders
+- Random phone photos
+- Duplicate images
+- Multiple angles of the same product
+- Inconsistent image quality
+- No SKU structure
+- No product metadata
+- No storefront
+- No launch creatives
+
+The media exists, but the business structure does not.
+
+---
+
+## The Solution
+
+LaunchForge AI reconstructs the commerce structure hidden inside raw product media.
+
+### Core Workflow
+
+**Raw Product Media -> AI Understanding -> Product Catalog -> Launch Intelligence -> Storefront -> Campaign -> Product Video**
+
+LaunchForge can:
+
+- Bulk upload product media
+- Identify products with Cloudinary AI Vision
+- Extract category, color, style, material, tags, and descriptions
+- Reconstruct SKU families from raw media
+- Detect exact duplicates with ETag
+- Use pHash as a visual-similarity signal
+- Identify multiple views of the same product
+- Check media quality before launch
+- Manage price and stock in bulk
+- Export and import catalog data through CSV
+- Store commerce data as Cloudinary structured metadata
+- Generate niche-aware storefronts
+- Create campaign imagery from managed product assets
+- Generate vertical product videos with Cloudinary transformations
+
+> **Give us the mess. We give you the business.**
+
+---
+
+## Why LaunchForge Is Different
+
+Most ecommerce tools begin after a seller already has a structured catalog.
+
+LaunchForge starts before that.
+
+A seller can begin with an unorganized supplier folder, and LaunchForge helps reconstruct the actual inventory and commerce structure hidden inside the media.
+
+Instead of manually turning photos into products, LaunchForge creates one connected media-to-commerce workflow.
+
+---
+
+## Cloudinary at the Core
+
+Cloudinary is not used as passive image hosting.
+
+It powers the media intelligence, metadata, transformation, optimization, and delivery pipeline behind LaunchForge.
+
+### Upload and Media Management
+
+- Cloudinary Upload API
+- Managed media assets
+- Tags and context
+- Optimized delivery
+- Automatic image format and quality optimization
+
+### AI Product Understanding
+
 - Cloudinary AI Vision
-- structured product analysis
-- product/category/attribute extraction
-Catalog Intelligence
+- Structured product analysis
+- Product identification
+- Category detection
+- Color detection
+- Style detection
+- Material detection
+- Product tags and descriptions
+
+### Catalog Intelligence
+
 - ETag for exact duplicate detection
-- perceptual hash (pHash) as a similarity signal
-- AI-generated product-family and camera-angle metadata
-Media Doctor
-- image quality/focus analysis
-- launch-readiness checks
-- generative restoration where available
-Living Commerce Media
-- Cloudinary structured metadata
-- product name
-- price
-- stock
-- descriptions
-- catalog attributes
-Creative Generation
-- Cloudinary Image Generation where enabled
-- product-reference campaign imagery
-- Cloudinary transformations
-- background/scene generation where supported
-- recolor workflows where supported
-Video
-- Cloudinary image-to-video delivery using motion transformations
-- vertical MP4 product videos
-- multiple motion styles for social content
-Main Product Areas
-1. Launch
-Upload raw product photos and start a launch project.
-2. Catalog
-LaunchForge turns media into structured products.
+- Perceptual hash (pHash) as a visual similarity signal
+- AI-generated product family information
+- Camera-angle understanding
+- Trusted multi-angle product grouping
+
+### Media Doctor
+
+- Image focus analysis
+- Resolution checks
+- Media quality checks
+- Launch-readiness signals
+- Generative restoration workflows where available
+
+### Living Commerce Media
+
+LaunchForge connects product media with commerce information through Cloudinary structured metadata.
+
+This includes:
+
+- Product name
+- Price
+- Stock
+- Description
+- Category
+- Product attributes
+
+### Creative Generation
+
+LaunchForge uses Cloudinary-powered workflows for:
+
+- Campaign imagery
+- Product-reference creative generation
+- Image transformations
+- Background and scene workflows
+- Recolor workflows where available
+
+### Product Video
+
+LaunchForge generates vertical MP4 product videos using Cloudinary media transformations.
+
+These videos can be used for:
+
+- Instagram Reels
+- YouTube Shorts
+- Product launches
+- Social campaigns
+
+---
+
+## Main Product Areas
+
+### 1. Launch
+
+The seller uploads raw product photos exactly as they received them.
+
+LaunchForge begins understanding the inventory automatically.
+
+### 2. Catalog
+
+LaunchForge converts raw media into structured products.
+
 The seller can review or edit:
-- product name
-- category
-- color
-- style
-- material
-- description
-- tags
-- price
-- stock
-For larger catalogs, bulk inventory tools and CSV import/export avoid editing products one by one.
-3. Launch Intelligence
-Launch Intelligence is where LaunchForge converts media into actionable commerce structure.
+
+- Product name
+- Category
+- Color
+- Style
+- Material
+- Description
+- Tags
+- Price
+- Stock
+
+For large catalogs, LaunchForge includes bulk inventory controls and CSV import/export.
+
+### 3. Launch Intelligence
+
+Launch Intelligence is the core of LaunchForge.
+
 It includes:
+
 - Smart SKU Builder
-- duplicate detection
-- multi-angle product grouping
+- Duplicate detection
+- Multi-angle product grouping
 - Media Doctor
-- inventory metadata
-- market research shortcuts
-- campaign generation
-- multi-angle product galleries
-- Cloudinary capability visibility
-- launch-readiness scoring
-4. Website Studio
-LaunchForge uses the catalog and brand context to generate storefront directions such as:
+- Inventory metadata
+- Market research shortcuts
+- Campaign generation
+- Multi-angle product galleries
+- Launch-readiness scoring
+
+### 4. Website Studio
+
+LaunchForge can generate storefront directions based on the type of products being sold.
+
+Available design directions include:
+
 - Editorial
 - Luxe
 - Bold
 - Minimal
 - Tech
-The design can adapt to the niche instead of forcing every business into one template.
-5. Video Studio
-Create product-focused vertical videos for:
-- Instagram Reels
-- YouTube Shorts
-- product launches
-- social campaigns
-Single-product mode keeps one SKU as the focus, while campaign mode is used only when the seller deliberately selects multiple products.
-Example
+
+This allows different businesses to receive different storefront styles instead of using one fixed template.
+
+### 5. Video Studio
+
+LaunchForge creates product-focused vertical videos.
+
+Users can choose:
+
+- Single-product videos
+- Multi-product campaign videos
+- Different motion styles
+
+The final result is delivered as an MP4 through Cloudinary.
+
+---
+
+## Example Workflow
+
 A seller uploads:
-- front image of a black sneaker
-- side image of the same sneaker
-- back image of the same sneaker
-- another supplier photo
-- a watch
-- a backpack
-LaunchForge can turn that into:
-- structured sneaker product
-- multiple views grouped under the product
-- product attributes
-- catalog metadata
-- price and stock
-- storefront listing
-- campaign image
-- vertical launch video
+
+- Front image of a black sneaker
+- Side image of the same sneaker
+- Back image of the same sneaker
+- Another product photo
+- A watch
+- A backpack
+
+LaunchForge can turn those files into:
+
+1. Structured product records
+2. Product attributes
+3. Trusted multi-angle views
+4. Price and stock metadata
+5. A storefront
+6. Campaign imagery
+7. A vertical launch video
+
 The seller starts with files and ends with launch-ready commerce assets.
-Tech Stack
+
+---
+
+## Tech Stack
+
 - Next.js
-- TypeScript
 - React
+- TypeScript
 - Cloudinary
 - Cloudinary Node SDK
 - Cloudinary AI Vision
-- Cloudinary transformations
-- Cloudinary structured metadata
-Optional integrations can be configured separately for authentication and publishing workflows.
-Local Setup
-1. Clone the repository
+- Cloudinary Structured Metadata
+- Cloudinary Image Transformations
+- Cloudinary Video Transformations
+
+---
+
+## Local Setup
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/cherukuriharshadatta-cpu/launchforge-ai.git
 cd launchforge-ai
-2. Install dependencies
-npm install
-3. Create .env.local
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-Never commit .env.local or real API secrets.
-4. Run the app
-npm run dev
-Open:
-http://localhost:3000
-Recommended Demo Flow
-1. Upload a small folder containing:
-   - multiple views of one product
-   - another product
-   - one duplicate image
-2. Show automatic product understanding.
-3. Open Catalog and review the generated attributes.
-4. Open Launch Intelligence.
-5. Show SKU reconstruction, duplicate handling, media quality, and metadata.
-6. Add price/stock.
-7. Open Website Studio and generate a storefront.
-8. Generate campaign imagery.
-9. Open Video Studio and generate a vertical product video.
-Security
-Secrets are stored locally in .env.local and are excluded from the repository through .gitignore.
-Do not expose:
-- CLOUDINARY_API_SECRET
-- OAuth client secrets
-- private access tokens
-Repository
-https://github.com/cherukuriharshadatta-cpu/launchforge-ai
-License
-MIT License
