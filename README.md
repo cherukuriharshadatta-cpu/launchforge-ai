@@ -29,8 +29,11 @@
 </div>
 
 <p align="center">
-  <img src="docs/assets/launchforge-story.gif" width="100%" alt="LaunchForge product flow">
+  <img src="docs/assets/launchforge-judge-story.gif" width="100%" alt="LaunchForge judge story">
 </p>
+
+> ### **These are not six products. LaunchForge discovers there are three.**
+> LaunchForge starts before a clean catalog exists: it rejects duplicates, reconstructs multi-angle product families, and turns those reconstructed products into inventory, storefronts, campaigns and video.
 
 ---
 
