@@ -1,86 +1,217 @@
-## 🚀 Live Demo
+<div align="center">
 
-👉 **[Open LaunchForge AI](https://launchforge-ai-65yf.vercel.app/)**
+# 🚀 LaunchForge AI
 
+### **One supplier folder in. A launch-ready business out.**
 
-# LaunchForge AI
+Cloudinary-powered commerce launch studio that turns messy product media into a structured catalog, launch intelligence, storefronts, campaign creatives, and cinematic product videos.
 
-**Turn product chaos into a business ready to launch.**
+<p>
+  <a href="https://launchforge-ai-65yf.vercel.app/"><b>🌐 Live Demo</b></a>
+  ·
+  <a href="https://drive.google.com/file/d/1cQ1_hoDlyTPFOwrwFBh0la8cIz1dAD_N/view?usp=sharing"><b>🎬 Demo Video</b></a>
+  ·
+  <a href="https://github.com/cherukuriharshadatta-cpu/launchforge-ai"><b>💻 Source</b></a>
+</p>
 
-LaunchForge AI is a Cloudinary-powered commerce launch studio for small sellers, boutiques, D2C founders and wholesalers who start with an unstructured folder of product photos instead of a clean ecommerce catalog.
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-Media%20AI-3448C5)
+![Vercel](https://img.shields.io/badge/Deployed-Vercel-black)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-**Hackathon:** Pixels to Products — Cloudinary AI Hackathon 2026  
-**Track:** PS-03 — Your Media-Savvy Startup
+**Pixels to Products — Cloudinary AI Hackathon 2026**  
+**Track PS-03 · Your Media-Savvy Startup**
 
-## What LaunchForge does
+</div>
 
-**Messy supplier media → AI product understanding → structured catalog → launch intelligence → storefront → campaign → cinematic product video**
+---
 
-LaunchForge can:
+## The idea
 
-- bulk-upload product media to Cloudinary
-- analyze products with Cloudinary AI Vision
-- extract product name, category, material, color, style, tags and camera view
-- reconstruct likely SKU families from AI identity + ETag + pHash evidence
-- detect exact duplicates
-- flag weak media using Cloudinary quality analysis and resolution checks
-- manage price and stock at scale, including CSV workflows
-- keep commerce data attached to managed media
-- generate niche-aware storefront directions
-- create campaign imagery from managed product assets
-- turn a single product still into a **3-shot vertical Reel** using Cloudinary zoompan, video transitions and text overlays
-- optionally publish through Instagram / YouTube integrations when OAuth credentials are configured
+Small sellers rarely begin with a clean ecommerce database.
 
-> **Give us the mess. We give you the business.**
+They begin with:
 
-## Why it stands out
+- WhatsApp product images
+- supplier folders
+- duplicate files
+- inconsistent photography
+- multiple views of the same item
+- no SKU structure
+- no metadata
+- no storefront
+- no campaign assets
 
-Most ecommerce tools assume the seller already has a clean product catalog. LaunchForge starts **before the catalog exists**.
+**LaunchForge starts before the catalog exists.**
 
-The media folder itself becomes the input to the business-building workflow. Cloudinary is therefore not passive storage: it is the upload, AI understanding, metadata, transformation, optimization, creative and video layer that the product depends on.
+> **Messy supplier media → AI understanding → structured catalog → launch intelligence → storefront → campaign → cinematic video**
+
+**Give us the mess. We give you the business.**
+
+---
+
+## Product overview
+
+<p align="center">
+  <img src="docs/assets/launchforge-overview.png" alt="LaunchForge catalog and launch intelligence" width="100%">
+</p>
+
+LaunchForge uses Cloudinary as the **media operating layer**, not just file hosting.
+
+A seller can upload raw product media and move through one connected workflow:
+
+1. **Understand** — AI Vision extracts product identity and attributes.
+2. **Reconstruct** — duplicate and visual-similarity evidence helps rebuild product/SKU structure.
+3. **Prepare** — Media Doctor checks launch readiness and image quality.
+4. **Merchandise** — price, stock, metadata and bulk catalog tools make the inventory usable.
+5. **Launch** — generate storefront directions and campaign imagery.
+6. **Promote** — turn product stills into vertical Cloudinary-powered motion videos.
+
+---
+
+## Why LaunchForge is different
+
+Most ecommerce tools assume the seller already has:
+
+- a clean catalog,
+- product names,
+- SKUs,
+- polished media,
+- and structured data.
+
+LaunchForge attacks the messy step **before all of that**.
+
+| Typical workflow | LaunchForge |
+|---|---|
+| Manually clean supplier images | Start with the raw folder |
+| Manually identify products | AI-assisted product understanding |
+| Manually group product views | SKU reconstruction signals |
+| Edit products one-by-one | Bulk price/stock + CSV workflows |
+| Build storefront separately | Storefront generated from the catalog |
+| Create marketing separately | Campaign media uses the same managed assets |
+| Edit social video separately | Cloudinary storyboard Reel engine |
+
+The same managed media stays connected through the whole launch workflow.
+
+---
 
 ## Cloudinary at the core
 
 | Cloudinary capability | How LaunchForge uses it |
 |---|---|
-| Upload API | Raw supplier/product media ingestion |
-| AI Vision | Structured product understanding and camera/view metadata |
-| ETag | Exact duplicate detection |
-| pHash | Supporting perceptual-similarity evidence |
-| Quality Analysis | Media Doctor focus/quality checks |
-| Structured/context metadata | Product and commerce data attached to media |
-| Responsive transformations | Catalog, square, portrait and story derivatives |
-| `f_auto` / `q_auto` | Optimized delivery |
-| Generative transforms | Restore / background / recolor where account access allows |
-| Image Generation | Campaign imagery where the add-on is enabled |
-| Zoompan | Product still → motion clip |
-| Video splice + transitions | 3-shot cinematic Reel composition |
-| Video text layers | Product headline/name/CTA overlays |
-| Product Gallery / 3D | Optional real 3D/AR asset viewing |
+| **Upload API** | Raw supplier/product media ingestion |
+| **AI Vision** | Product understanding, attributes and view metadata |
+| **ETag** | Exact duplicate evidence |
+| **pHash** | Perceptual-similarity evidence for SKU grouping |
+| **Quality analysis** | Media Doctor checks |
+| **Structured/context metadata** | Product and commerce information attached to assets |
+| **Image transformations** | Catalog, campaign and storefront derivatives |
+| **`f_auto` / `q_auto`** | Optimized media delivery |
+| **Image generation / generative transforms** | Campaign scenes and product creative workflows where account access allows |
+| **Zoompan** | Static product image → motion shot |
+| **Video splice + transitions** | Multi-shot Reel composition |
+| **Video text layers** | Product name, headline and CTA overlays |
 
-Cloudinary documents zoompan for animating static images, video concatenation/splicing, cross-fade transitions and text/video layers; the final Reel engine combines those primitives into one product-video workflow.
+Cloudinary is therefore the **media intelligence + transformation + delivery layer** that connects the product experience end to end.
 
-## Judge Demo Mode
+---
 
-The hosted deployment remains fully explorable even if the project owner's Cloudinary AI Vision free-tier allowance is exhausted.
+## Architecture
 
-When AI Vision returns a quota/rate-limit response, LaunchForge transparently switches to a **pre-analyzed demo catalog backed by real Cloudinary assets**. Judges can still explore:
+```mermaid
+flowchart LR
+    A[Raw supplier media] --> B[Cloudinary Upload API]
+    B --> C[AI Vision]
+    B --> D[ETag / pHash]
+    C --> E[Structured product data]
+    D --> F[SKU reconstruction]
+    E --> G[Launch Intelligence]
+    F --> G
+    G --> H[Catalog + price + stock]
+    H --> I[Website Studio]
+    H --> J[Campaign Creative]
+    H --> K[Video Studio]
+    I --> L[Launch-ready storefront]
+    J --> M[Cloudinary campaign assets]
+    K --> N[Vertical MP4 Reel]
+```
 
-- Catalog
-- Launch Intelligence
+---
+
+## Main product areas
+
+### 1. Launch
+Bulk upload the supplier/product folder and begin a launch project.
+
+### 2. Catalog
+Review AI-understood products and manage:
+
+- name
+- category
+- color
+- style
+- material
+- tags
+- description
+- price
+- stock
+
+For larger catalogs, LaunchForge includes search, batch actions and CSV import/export.
+
+### 3. Launch Intelligence
+The core differentiator.
+
+Launch Intelligence brings together:
+
+- product/SKU evidence
+- duplicate handling
+- trusted multi-angle views
 - Media Doctor
-- pricing / stock workflows
-- Website Studio
-- campaign media
-- multi-angle product views
-- Video Studio
-- Publish workflow
+- product metadata
+- campaign generation
+- launch-readiness signals
 
-The submitted demo video shows the full fresh-upload AI Vision workflow working end-to-end before the allowance was exhausted.
+### 4. Website Studio
+Generate storefront directions from the same catalog instead of forcing every business into one generic layout.
+
+### 5. Video Studio
+Create vertical product motion using a Cloudinary-native storyboard pipeline:
+
+**product still → multiple zoom/pan shots → transitions → text overlays → MP4**
+
+Motion styles include cinematic, social and premium/luxury directions.
+
+---
+
+## Judge walkthrough
+
+For the fastest evaluation:
+
+1. Open the **[Live Demo](https://launchforge-ai-65yf.vercel.app/)**.
+2. Explore the catalog and launch-intelligence workflow.
+3. Open **Website Studio** to preview storefront directions.
+4. Open **Video Studio** and generate a product Reel.
+5. Watch the **[submitted demo video](https://drive.google.com/file/d/1cQ1_hoDlyTPFOwrwFBh0la8cIz1dAD_N/view?usp=sharing)** for the complete fresh-upload AI Vision flow.
+6. For fresh AI Vision testing with your own quota, use the BYOK setup below.
+
+---
+
+## Hosted demo & AI Vision quota note
+
+The public deployment is designed to remain explorable even if the project owner's **Cloudinary AI Vision free-tier allowance** is exhausted.
+
+When the hosted account returns a quota/rate-limit response, LaunchForge can use a **pre-analyzed Cloudinary-backed demo catalog** so judges can still evaluate the downstream product workflow.
+
+The submitted demo video shows the complete fresh-upload AI Vision flow functioning before the hosted free-tier allowance was exhausted.
+
+This limitation is account quota related, not a dependency on localhost.
+
+---
 
 ## Bring Your Own Cloudinary Keys
 
-Judges who want to test **fresh AI Vision analysis** can run LaunchForge locally with their own Cloudinary account. Secrets are never committed to the repository.
+For a full fresh-analysis test, run LaunchForge locally using your own Cloudinary account.
 
 ### 1. Clone
 
@@ -98,7 +229,7 @@ CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-Enable the **Cloudinary AI Vision** add-on in that Cloudinary account if you want fresh product analysis.
+Enable the **Cloudinary AI Vision** add-on if you want fresh product analysis.
 
 ### 3. Run
 
@@ -106,56 +237,71 @@ Enable the **Cloudinary AI Vision** add-on in that Cloudinary account if you wan
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open:
 
-> Security note: LaunchForge does **not** ask judges to paste their Cloudinary API secret into the public Vercel deployment. BYOK testing is local so the secret stays on the judge's machine/server environment.
+```text
+http://localhost:3000
+```
 
-## Final Video Studio
+> **Security:** LaunchForge never asks judges to paste their Cloudinary API secret into the public Vercel deployment. BYOK secrets stay in the judge's own local/server environment.
 
-Single-product Reel generation uses a deterministic Cloudinary-native storyboard:
-
-1. create three different zoom/pan camera shots from the same managed product image
-2. save the derived clips back to Cloudinary
-3. splice them into one vertical MP4
-4. add Cloudinary transition effects between shots
-5. overlay product headline, name and CTA
-6. verify the resulting media URL before returning it to the UI
-7. automatically fall back to a verified single motion clip if advanced composition is unavailable
-
-This avoids depending on region-gated Image-to-Video beta access while still demonstrating real Cloudinary video editing.
+---
 
 ## Tech stack
 
-- Next.js 16
-- React 19
-- TypeScript
-- Cloudinary Node SDK
-- Cloudinary AI Vision
-- Cloudinary image/video transformations
-- optional Supabase authentication
+- **Next.js 16**
+- **React 19**
+- **TypeScript**
+- **Cloudinary Node SDK**
+- **Cloudinary AI Vision**
+- **Cloudinary image + video transformations**
+- **Vercel**
+- optional OAuth integrations for social publishing
 
-## Recommended judge flow
+---
 
-1. Open the live deployment.
-2. Use the preloaded judge demo catalog if the hosted AI Vision allowance is exhausted.
-3. Open **Catalog** to inspect product data, prices and stock.
-4. Open **Launch Intelligence** to inspect SKU evidence, media health and metadata.
-5. Open **Website Studio** to switch storefront directions.
-6. Open **Video Studio** and generate a cinematic single-product Reel.
-7. For fresh AI Vision testing, use the BYOK local setup above.
+## Repository structure
+
+```text
+launchforge-ai/
+├── app/                  # Next.js UI + API routes
+├── lib/                  # Cloudinary, AI and commerce logic
+├── public/               # Demo media and static assets
+├── docs/                 # Product/technical notes
+├── .env.example
+├── .gitignore
+├── LICENSE
+├── README.md
+├── package.json
+├── next.config.mjs
+└── tsconfig.json
+```
+
+---
 
 ## Security
 
-`.env.local` is gitignored. Never commit:
+The following must never be committed:
 
 - `CLOUDINARY_API_SECRET`
 - OAuth client secrets
 - private access tokens
+- `.env.local`
 
-## Repository
+The repository's `.gitignore` excludes local environment files.
 
-https://github.com/cherukuriharshadatta-cpu/launchforge-ai
+---
+
+## Links
+
+- 🌐 **Live app:** https://launchforge-ai-65yf.vercel.app/
+- 🎬 **Demo video:** https://drive.google.com/file/d/1cQ1_hoDlyTPFOwrwFBh0la8cIz1dAD_N/view?usp=sharing
+- 💻 **GitHub:** https://github.com/cherukuriharshadatta-cpu/launchforge-ai
+- 💼 **LinkedIn launch post:** https://www.linkedin.com/posts/harsha-cherukuri-506593320_github-cherukuriharshadatta-cpulaunchforge-ai-activity-7512211904119853056-rxoy
+- 𝕏 **X launch post:** https://x.com/HarshaCherpjwx/status/2106447579328430471
+
+---
 
 ## License
 
-MIT
+MIT License.
