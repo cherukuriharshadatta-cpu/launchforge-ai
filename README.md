@@ -29,7 +29,7 @@
 </div>
 
 <p align="center">
-  <img src="docs/assets/launchforge-judge-story.gif" width="100%" alt="LaunchForge judge story">
+  <img src="docs/assets/launchforge-judge-story.webp" width="960" alt="LaunchForge: messy supplier media to reconstructed business">
 </p>
 
 > ### **These are not six products. LaunchForge discovers there are three.**
