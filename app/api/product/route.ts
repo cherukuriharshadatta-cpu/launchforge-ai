@@ -84,7 +84,7 @@ export async function POST(request: Request) {
         .map(([k, v]) => `${k}=${String(v).replace(/[|=]/g, " ").slice(0, 900)}`)
         .join("|");
 
-      await cloudinary.uploader.add_tag(uniqueTags, [uploaded.public_id], { resource_type: "image" });
+      await cloudinary.uploader.add_tag(uniqueTags.join(","), [uploaded.public_id], { resource_type: "image" });
       await cloudinary.uploader.add_context(context, [uploaded.public_id], { resource_type: "image" });
     } catch (e) {
       console.error("Metadata update warning", e);
@@ -131,3 +131,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Processing failed." }, { status: 500 });
   }
 }
+

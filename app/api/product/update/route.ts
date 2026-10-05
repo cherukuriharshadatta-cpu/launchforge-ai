@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     ].join("|");
     await cloudinary.uploader.add_context(context, [publicId], { resource_type:"image" });
     const tags = Array.from(new Set(["launchforge","inventory", cleanTag(String(body.category||"")), ...(Array.isArray(body.tags)?body.tags:[]).map((x:any)=>cleanTag(String(x))).filter(Boolean)]));
-    await cloudinary.uploader.add_tag(tags, [publicId], { resource_type:"image" });
+    await cloudinary.uploader.add_tag(tags.join(","), [publicId], { resource_type:"image" });
     return NextResponse.json({ ok:true, livingCreative: livingCreativeUrl(publicId), stock: stockNumber });
   } catch (error:any) {
     const msg = error?.error?.message || error?.message || "Could not update product metadata.";
@@ -40,3 +40,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: msg }, { status:500 });
   }
 }
+
