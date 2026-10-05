@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "verify": "node --test tests/*.test.mjs",
+    "judge-check": "npm run verify && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
