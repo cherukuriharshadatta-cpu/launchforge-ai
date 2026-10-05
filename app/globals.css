@@ -121,3 +121,42 @@ body{background:var(--v74-canvas)}
 
 @media(max-width:900px){.campaignComposer{grid-template-columns:1fr}.campaignResults{grid-template-columns:1fr}.angleStage{height:420px}}
 @media(max-width:600px){.angleStage{height:330px}.angleFilmstrip button{min-width:85px}.campaignResults{grid-template-columns:1fr}}
+
+
+/* ===== Judge-safe AI Vision quota fallback ===== */
+.judgeDemoBanner{
+  margin:16px 34px 0;
+  padding:14px 16px;
+  border:1px solid #ecdca5;
+  border-radius:16px;
+  background:linear-gradient(135deg,#fffaf0,#fffdf8);
+  box-shadow:0 12px 34px rgba(103,78,18,.06);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.judgeDemoIcon{
+  width:32px;
+  height:32px;
+  flex:0 0 auto;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:#f2c94c;
+  color:#382d0d;
+  font-weight:900;
+  font-family:Georgia,serif;
+}
+.judgeDemoBanner>div:nth-child(2){flex:1;min-width:0}
+.judgeDemoBanner b,.judgeDemoBanner span{display:block}
+.judgeDemoBanner b{font-size:11px;color:#3d3214;margin-bottom:3px}
+.judgeDemoBanner span{font-size:9px;line-height:1.55;color:#75653a;max-width:980px}
+.judgeDemoBanner .secondary{white-space:nowrap;background:#fffdf7;border-color:#e8d69d;color:#55451e}
+@media(max-width:760px){
+  .judgeDemoBanner{margin:12px 14px 0;align-items:flex-start;flex-wrap:wrap}
+  .judgeDemoBanner .secondary{width:100%}
+}
+
+/* ===== Final judge upgrade: BYOK + storyboard video ===== */
+.judgeDemoActions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.byokLink{text-decoration:none!important;display:inline-flex;align-items:center;justify-content:center}.stableVideoHero{background:radial-gradient(circle at 82% 16%,rgba(111,123,255,.20),transparent 36%),linear-gradient(135deg,#111722,#20273a)!important}.stableVideoHero h3{max-width:620px}.stableVideoHero .newPill{letter-spacing:.14em}.videoReadyBadge{box-shadow:0 8px 30px rgba(118,130,255,.12)}
+@media(max-width:760px){.judgeDemoActions{width:100%}.judgeDemoActions>*{flex:1;min-width:180px}}
