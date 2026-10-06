@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import cloudinary from "@/lib/cloudinary";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -7,146 +6,142 @@ export const maxDuration = 60;
 type ReelProduct = {
   publicId: string;
   name?: string;
-  category?: string;
-  headline?: string;
-  caption?: string;
-  cta?: string;
 };
 
 function assertCloudName() {
-  const cloudName = process.env.CLOUDINARY_CLOUD_NAME?.trim();
-  if (!cloudName) throw new Error("CLOUDINARY_CLOUD_NAME is missing from .env.local");
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+  if (!cloudName) {
+    throw new Error("CLOUDINARY_CLOUD_NAME is missing from .env.local");
+  }
   return cloudName;
 }
 
 function encPublicId(publicId: string) {
-  return publicId.split("/").map(encodeURIComponent).join("/");
+  // Keep folder slashes, encode each path segment safely.
+  return publicId
+    .split("/")
+    .map((part) => encodeURIComponent(part))
+    .join("/");
 }
 
-function layerId(publicId: string) {
-  return publicId.replace(/\//g, ":");
-}
+function zoompanTransform(style: string, duration: number) {
+  const du = Math.max(4, Math.min(8, Math.round(duration || 6)));
 
-function safeText(value?: string, fallback = "") {
-  return encodeURIComponent(String(value || fallback).replace(/[,%/]/g, " ").slice(0, 62));
-}
-
-function shotMotion(style: string, shot: number, duration: number) {
-  const du = Math.max(1.8, Math.min(3.2, duration));
+  // Cloudinary documented syntax:
+  // e_zoompan:du_7;from_(x_0.0;y_0.0;zoom_4.5);to_(x_1.0;y_1.0;zoom_1.0)
+  // We keep the product near center and use moderate zoom so it stays recognizable.
   if (style === "punch") {
-    return shot === 0
-      ? `e_zoompan:du_${du};from_(x_0.50;y_0.50;zoom_1.00);to_(x_0.50;y_0.48;zoom_1.70)`
-      : shot === 1
-        ? `e_zoompan:du_${du};from_(x_0.54;y_0.48;zoom_1.30);to_(x_0.46;y_0.52;zoom_2.15)`
-        : `e_zoompan:du_${du};from_(x_0.48;y_0.52;zoom_1.45);to_(x_0.52;y_0.48;zoom_1.05)`;
+    return `e_zoompan:du_${du};from_(x_0.50;y_0.50;zoom_1.0);to_(x_0.50;y_0.50;zoom_2.0)`;
   }
+
   if (style === "luxe") {
-    return shot === 0
-      ? `e_zoompan:du_${du};from_(x_0.44;y_0.50;zoom_1.04);to_(x_0.50;y_0.50;zoom_1.32)`
-      : shot === 1
-        ? `e_zoompan:du_${du};from_(x_0.48;y_0.48;zoom_1.25);to_(x_0.55;y_0.50;zoom_1.58)`
-        : `e_zoompan:du_${du};from_(x_0.55;y_0.50;zoom_1.40);to_(x_0.48;y_0.50;zoom_1.10)`;
+    return `e_zoompan:du_${du};from_(x_0.44;y_0.50;zoom_1.10);to_(x_0.56;y_0.50;zoom_1.55)`;
   }
-  return shot === 0
-    ? `e_zoompan:du_${du};from_(x_0.48;y_0.50;zoom_1.00);to_(x_0.52;y_0.48;zoom_1.42)`
-    : shot === 1
-      ? `e_zoompan:du_${du};from_(x_0.52;y_0.48;zoom_1.28);to_(x_0.47;y_0.52;zoom_1.72)`
-      : `e_zoompan:du_${du};from_(x_0.46;y_0.52;zoom_1.35);to_(x_0.54;y_0.48;zoom_1.08)`;
+
+  // Cinematic push.
+  return `e_zoompan:du_${du};from_(x_0.50;y_0.50;zoom_1.0);to_(x_0.52;y_0.48;zoom_1.70)`;
 }
 
-function buildShotUrl(publicId: string, style: string, shot: number, duration: number) {
-  const cloud = assertCloudName();
-  const bg = style === "luxe" ? "f3eee6" : style === "punch" ? "10131a" : "111318";
-  const motion = shotMotion(style, shot, duration);
-  return `https://res.cloudinary.com/${cloud}/image/upload/${motion}/c_pad,w_720,h_1280,b_rgb:${bg}/${encPublicId(publicId)}.mp4`;
+function buildVideoUrl(publicId: string, style: string, duration: number) {
+  const cloudName = assertCloudName();
+  const motion = zoompanTransform(style, duration);
+
+  // IMPORTANT:
+  // 1) zoompan comes first on the IMAGE.
+  // 2) after that Cloudinary is producing video frames, so we only apply
+  //    ordinary video-safe scaling/padding.
+  // 3) no g_auto, no q_auto/f_auto before zoompan.
+  const after = "c_pad,w_720,h_1280,b_rgb:f5f4f1";
+
+  return `https://res.cloudinary.com/${cloudName}/image/upload/${motion}/${after}/${encPublicId(publicId)}.mp4`;
 }
 
 async function verifyVideo(url: string) {
-  const response = await fetch(url, { method: "GET", headers: { Range: "bytes=0-1023" }, cache: "no-store" });
+  const response = await fetch(url, {
+    method: "GET",
+    headers: { Range: "bytes=0-1023" },
+    cache: "no-store",
+  });
+
   if (!response.ok && response.status !== 206) {
     const cldError = response.headers.get("x-cld-error");
-    throw new Error(cldError ? `Cloudinary video error: ${cldError}` : `Cloudinary video returned HTTP ${response.status}`);
-  }
-}
-
-async function uploadDerivedClip(url: string, reelId: string, index: number) {
-  const uploaded: any = await cloudinary.uploader.upload(url, {
-    resource_type: "video",
-    folder: `launchforge/reels/${reelId}`,
-    public_id: `shot-${index + 1}`,
-    overwrite: true,
-    tags: "launchforge,reel,storyboard",
-  });
-  return uploaded.public_id as string;
-}
-
-function finalStoryboardUrl(base: string, second: string, third: string, product: ReelProduct, style: string) {
-  const cloud = assertCloudName();
-  const transition = style === "punch" ? "wipeleft" : "fade";
-  const td = style === "punch" ? "0.18" : style === "luxe" ? "0.55" : "0.35";
-  const name = safeText(product.name, "New arrival");
-  const headline = safeText(product.headline, style === "luxe" ? "Designed to be noticed" : "NEW ARRIVAL");
-  const cta = safeText(product.cta, "Shop now");
-  const transforms = [
-    "c_fill,w_720,h_1280",
-    `fl_splice:transition_(name_${transition};du_${td}),l_video:${layerId(second)}`,
-    "c_fill,w_720,h_1280",
-    "fl_layer_apply",
-    `fl_splice:transition_(name_${transition};du_${td}),l_video:${layerId(third)}`,
-    "c_fill,w_720,h_1280",
-    "fl_layer_apply",
-    `l_text:Arial_28_bold:${headline}/co_white/o_92/fl_layer_apply,g_north_west,x_48,y_76`,
-    `l_text:Arial_42_bold:${name}/co_white/fl_layer_apply,g_south_west,x_48,y_118`,
-    `l_text:Arial_24_bold:${cta}/co_white/o_95/fl_layer_apply,g_south_west,x_50,y_70`,
-    "q_auto:good",
-  ];
-  return `https://res.cloudinary.com/${cloud}/video/upload/${transforms.join("/")}/${encPublicId(base)}.mp4`;
-}
-
-async function buildStoryboard(product: ReelProduct, style: string, duration: number) {
-  const total = Math.max(6, Math.min(10, Math.round(duration || 6)));
-  const shotDuration = Math.max(2, Math.min(3.2, total / 3 + 0.25));
-  const reelId = `storyboard-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
-  const sourceUrls = [0, 1, 2].map(i => buildShotUrl(product.publicId, style, i, shotDuration));
-  for (const url of sourceUrls) await verifyVideo(url);
-
-  try {
-    const uploaded: string[] = [];
-    for (let i = 0; i < sourceUrls.length; i++) uploaded.push(await uploadDerivedClip(sourceUrls[i], reelId, i));
-    const finalUrl = finalStoryboardUrl(uploaded[0], uploaded[1], uploaded[2], product, style);
-    await verifyVideo(finalUrl);
-    return { url: finalUrl, shots: 3, engine: "cloudinary-storyboard", fallback: false };
-  } catch (storyboardError) {
-    console.warn("Storyboard composition fallback:", storyboardError);
-    // Never break judging: the middle hero shot is still a real Cloudinary MP4.
-    return { url: sourceUrls[1], shots: 1, engine: "cloudinary-zoompan", fallback: true };
+    throw new Error(
+      cldError
+        ? `Cloudinary video error: ${cldError}`
+        : `Cloudinary video returned HTTP ${response.status}`
+    );
   }
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
     const mode = body?.mode === "campaign" ? "campaign" : "single";
-    const style = ["cinematic", "punch", "luxe"].includes(body?.style) ? body.style : "cinematic";
+    const style = ["cinematic", "punch", "luxe"].includes(body?.style)
+      ? body.style
+      : "cinematic";
     const duration = Number(body?.duration) || 6;
     const products = (Array.isArray(body?.products) ? body.products : []) as ReelProduct[];
-    if (!products.length || !products[0]?.publicId) return NextResponse.json({ error: "Choose a product first." }, { status: 400 });
 
+    if (!products.length || !products[0]?.publicId) {
+      return NextResponse.json(
+        { error: "Choose a product first." },
+        { status: 400 }
+      );
+    }
+
+    // Submission-safe: single product is the reliable, polished path.
+    // Campaign mode returns videos for each selected product rather than
+    // forcing unrelated products into one slideshow.
     if (mode === "campaign") {
-      const selected = products.filter(p => p?.publicId).slice(0, 4);
+      const selected = products.filter((p) => p?.publicId).slice(0, 5);
       const clips = [];
+
       for (const product of selected) {
-        const built = await buildStoryboard(product, style, duration);
-        clips.push({ ...built, publicId: product.publicId, name: product.name || "Product", style, durationEstimate: duration, mode: "single" });
+        const url = buildVideoUrl(product.publicId, style, duration);
+        await verifyVideo(url);
+        clips.push({
+          url,
+          publicId: product.publicId,
+          name: product.name || "Product",
+          style,
+          durationEstimate: duration,
+          mode: "single",
+        });
       }
-      return NextResponse.json({ clips, reel: clips[0] || null });
+
+      return NextResponse.json({
+        clips,
+        reel: clips[0] || null,
+      });
     }
 
     const product = products[0];
-    const built = await buildStoryboard(product, style, duration);
-    return NextResponse.json({ reel: { ...built, publicId: product.publicId, name: product.name || "Product", format: "mp4", durationEstimate: duration, style, mode: "single" } });
+    const url = buildVideoUrl(product.publicId, style, duration);
+    await verifyVideo(url);
+
+    return NextResponse.json({
+      reel: {
+        url,
+        publicId: product.publicId,
+        name: product.name || "Product",
+        format: "mp4",
+        durationEstimate: duration,
+        style,
+        mode: "single",
+      },
+    });
   } catch (error: any) {
     console.error("LaunchForge reel generation failed:", error);
-    return NextResponse.json({ error: error?.error?.message || error?.message || "Could not generate the product video." }, { status: 500 });
+
+    return NextResponse.json(
+      {
+        error:
+          error?.message ||
+          "Could not generate the product video.",
+      },
+      { status: 500 }
+    );
   }
 }
