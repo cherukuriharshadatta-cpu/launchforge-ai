@@ -1,4 +1,5 @@
 /* Judge-safe UI patch: keep the original Product Graph, replace only Media Doctor, and keep catalog photos readable. */
+.demoMatchActive .reconstructionReceipt{display:none!important}
 .demoMatchActive .intelTwoCol{display:block!important}
 .demoMatchActive #media-doctor{width:100%!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
 .demoMatchActive #media-doctor>:not(.demoDoctorMount){display:none!important}
