@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import CatalogImageFix from "./CatalogImageFix";
 
 export const metadata: Metadata = {
   title: "LaunchForge AI",
@@ -7,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body>{children}<CatalogImageFix /></body></html>;
 }
