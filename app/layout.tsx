@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./depth.css";
 import type { Metadata } from "next";
 import DepthEnhancer from "./DepthEnhancer";
 
