@@ -94,5 +94,27 @@ export default function UiPolish() {
     return () => observer.disconnect();
   }, []);
 
-  return null;
+  return <style>{`
+    #product-graph,
+    #media-doctor,
+    #creative-lab {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #product-graph > .intelHead { order: 0; }
+    #product-graph > .graphFlow { order: 1; }
+    #product-graph > .graphProofStrip { order: 2; }
+    #product-graph > .depthDetails { order: 3; }
+    #product-graph > .reconstructionReceipt { order: 4; }
+
+    #media-doctor > .intelHead,
+    #creative-lab > .intelHead { order: 0; }
+
+    #media-doctor > .depthDetails,
+    #creative-lab > .depthDetails { order: 1; }
+
+    #media-doctor > :not(.intelHead):not(.depthDetails),
+    #creative-lab > :not(.intelHead):not(.depthDetails) { order: 2; }
+  `}</style>;
 }
