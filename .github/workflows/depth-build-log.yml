@@ -1,0 +1,39 @@
+name: Depth Build Log
+
+on:
+  push:
+    branches:
+      - fix-depth-build-20261006
+
+jobs:
+  build-log:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build and capture log
+        shell: bash
+        run: |
+          set +e
+          npm run build > build.log 2>&1
+          code=$?
+          cat build.log
+          echo $code > build.exit
+          exit 0
+      - name: Upload build log
+        uses: actions/upload-artifact@v4
+        with:
+          name: depth-build-log
+          path: |
+            build.log
+            build.exit
+      - name: Fail if build failed
+        shell: bash
+        run: |
+          code=$(cat build.exit)
+          if [ "$code" != "0" ]; then exit "$code"; fi
