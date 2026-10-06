@@ -82,9 +82,9 @@ export async function analyzeProduct(source: { assetId?: string; uri?: string })
   status: "enabled" | "fallback";
   message: string;
 }> {
-  const cloud = process.env.CLOUDINARY_CLOUD_NAME?.trim();
-  const key = process.env.CLOUDINARY_API_KEY?.trim();
-  const secret = process.env.CLOUDINARY_API_SECRET?.trim();
+ const cloud = process.env.CLOUDINARY_CLOUD_NAME?.trim();
+const key = process.env.CLOUDINARY_API_KEY?.trim();
+const secret = process.env.CLOUDINARY_API_SECRET?.trim();
 
   if (!cloud || !key || !secret) {
     return {
@@ -180,10 +180,10 @@ export async function analyzeProduct(source: { assetId?: string; uri?: string })
     );
 
     const raw = await res.text();
-    if (!res.ok) {
-      console.error("AI Vision failed:", res.status, raw);
-      return { data: fallback, status: "fallback", message: friendlyError(res.status, raw) };
-    }
+   if (!res.ok) {
+  console.error("AI Vision failed:", res.status, raw);
+  return { data: fallback, status: "fallback", message: friendlyError(res.status, raw) };
+}
 
     let json: any;
     try {
