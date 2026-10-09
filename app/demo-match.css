@@ -70,3 +70,20 @@
   .doctorHeader>div:last-child{flex-direction:column}
   .doctorHeader select{width:100%}
 }
+
+/* Readable catalog, product proof and Media Doctor typography. */
+.demoMatchActive .productCategory,.demoMatchActive .controlLabel,.demoMatchActive .eyebrow{font-size:10px}
+.demoMatchActive .productInfo>p{font-size:12px;line-height:1.55;height:auto;min-height:48px}
+.demoMatchActive .attributes small{font-size:9px}
+.demoMatchActive .attributes span{font-size:11px}
+.demoMatchActive .tagRow span{font-size:10px}
+.demoMatchActive .aiBadge{font-size:10px}
+.demoMatchActive .cardFoot>div b{font-size:13px}
+.demoMatchActive .cardFoot>div small,.demoMatchActive .cardFoot button{font-size:10px}
+.demoMatchActive .metricRow small,.demoMatchActive .metricRow span{font-size:11px}
+.demoMatchActive .intelJump button{font-size:11px}
+.demoMatchActive .skuCard small,.demoMatchActive .skuCard span{font-size:10px}
+.demoMatchActive .angleNote,.demoMatchActive .angleCounter span{font-size:11px}
+.doctorError{margin:12px 24px 0;color:#b42318;background:#fff4f3;border:1px solid #fecdca;border-radius:10px;padding:10px 12px;font-size:12px}
+.demoMatchActive .doctorSteps button small,.demoMatchActive .doctorSide small{font-size:10px}
+.demoMatchActive .doctorSide span{font-size:12px}

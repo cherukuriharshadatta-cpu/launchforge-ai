@@ -58,7 +58,8 @@ function buildShotUrl(publicId: string, style: string, shot: number, duration: n
   const cloud = assertCloudName();
   const bg = style === "luxe" ? "f3eee6" : style === "punch" ? "10131a" : "111318";
   const motion = shotMotion(style, shot, duration);
-  return `https://res.cloudinary.com/${cloud}/image/upload/${motion}/c_pad,w_720,h_1280,b_rgb:${bg}/${encPublicId(publicId)}.mp4`;
+  const trim = publicId.startsWith("launchforge/demo-catalog/") ? "e_trim:10/" : "";
+  return `https://res.cloudinary.com/${cloud}/image/upload/${trim}${motion}/c_pad,w_720,h_1280,b_rgb:${bg}/${encPublicId(publicId)}.mp4`;
 }
 
 async function verifyVideo(url: string) {
