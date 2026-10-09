@@ -2,7 +2,6 @@ import "./globals.css";
 import "./demo-match.css";
 import type { Metadata } from "next";
 import DemoMatchExperience from "./DemoMatchExperience";
-import CatalogImageFix from "./CatalogImageFix";
 
 export const metadata: Metadata = {
   title: "LaunchForge AI",
@@ -10,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}<DemoMatchExperience/><CatalogImageFix/></body></html>;
+  return <html lang="en"><body>{children}<DemoMatchExperience/></body></html>;
 }

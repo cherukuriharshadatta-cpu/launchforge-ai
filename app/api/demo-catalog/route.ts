@@ -158,6 +158,7 @@ function marketingUrl(publicId: string, headline: string, cta: string, story = f
   return cloudinary.url(publicId, {
     secure: true,
     transformation: [
+      { effect: "trim:10" },
       { width, height, crop: "fill", gravity: "auto" },
       { effect: "gradient_fade", y: 0.55 },
       {
@@ -237,14 +238,14 @@ export async function POST() {
         publicId,
         assetId: uploaded.asset_id,
         original: uploaded.secure_url,
-        catalog: cloudinary.url(publicId, { secure: true, transformation: [{ width: 900, height: 1100, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
-        square: cloudinary.url(publicId, { secure: true, transformation: [{ width: 1080, height: 1080, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
-        portrait: cloudinary.url(publicId, { secure: true, transformation: [{ width: 1080, height: 1350, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
-        story: cloudinary.url(publicId, { secure: true, transformation: [{ width: 1080, height: 1920, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
+        catalog: cloudinary.url(publicId, { secure: true, transformation: [{ effect: "trim:10" }, { width: 900, height: 1100, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
+        square: cloudinary.url(publicId, { secure: true, transformation: [{ effect: "trim:10" }, { width: 1080, height: 1080, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
+        portrait: cloudinary.url(publicId, { secure: true, transformation: [{ effect: "trim:10" }, { width: 1080, height: 1350, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
+        story: cloudinary.url(publicId, { secure: true, transformation: [{ effect: "trim:10" }, { width: 1080, height: 1920, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
         backgroundRemoved: cloudinary.url(publicId, { secure: true, transformation: [{ effect: "background_removal" }, { width: 1000, height: 1200, crop: "fit" }, ...baseOptimized] }),
         marketingSquare: marketingUrl(publicId, item.ai.headline, item.ai.cta, false),
         marketingStory: marketingUrl(publicId, item.ai.headline, item.ai.cta, true),
-        restored: cloudinary.url(publicId, { secure: true, transformation: [{ effect: "gen_restore" }, { width: 900, height: 1100, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
+        restored: cloudinary.url(publicId, { secure: true, transformation: [{ effect: "trim:10" }, { effect: "gen_restore" }, { width: 900, height: 1100, crop: "fill", gravity: "auto" }, ...baseOptimized] }),
         etag: uploaded.etag,
         phash: uploaded.phash,
         width: uploaded.width,
