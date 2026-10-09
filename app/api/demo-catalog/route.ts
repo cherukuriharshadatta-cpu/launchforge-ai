@@ -158,6 +158,7 @@ function marketingUrl(publicId: string, headline: string, cta: string, story = f
   return cloudinary.url(publicId, {
     secure: true,
     transformation: [
+      { effect: "trim:10" },
       { width, height, crop: "fill", gravity: "auto" },
       { effect: "gradient_fade", y: 0.55 },
       {

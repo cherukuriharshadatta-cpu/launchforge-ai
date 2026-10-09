@@ -393,7 +393,7 @@ function StorePreview({ products, brand, strategy, theme }: { products: ProductA
 
   if (theme === "tech") return <div className="storeCanvas techStore" style={brandStyle(strategy)}>
     <header><b>{brand.name}</b><nav>Products&nbsp;&nbsp; Technology&nbsp;&nbsp; Support</nav><button>Buy now</button></header>
-    <section className="techSplash"><div><small>{collection.toUpperCase()}</small><h2>{heroLine}</h2><p>{strategy?.campaignAngle || hero.ai.description}</p><button>Explore system</button></div><div className="techOrb"><img src={hero.backgroundRemoved || hero.portrait}/></div></section>
+    <section className="techSplash"><div><small>{collection.toUpperCase()}</small><h2>{heroLine}</h2><p>{strategy?.campaignAngle || hero.ai.description}</p><button>Explore system</button></div><div className="techOrb"><img src={hero.publicId.startsWith("launchforge/demo-catalog/") ? productPreviewUrl(hero,"portrait") : hero.backgroundRemoved || hero.portrait} alt={hero.ai.name}/></div></section>
     <section className="techCards">{products.slice(0,4).map(p => <article key={p.publicId}><img src={productPreviewUrl(p,"square")}/><small>{p.ai.category}</small><b>{p.ai.name}</b><span>{[p.ai.color,p.ai.style].filter(Boolean).join(" · ")}</span></article>)}</section>
   </div>;
 
